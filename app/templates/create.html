@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="create-div" style="margin-left: 10%; margin-right: 10%; border-radius: 15px;">
+			<div class="contain">
+				<img class="image-create" src="https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?cs=srgb&dl=pexels-francesco-ungaro-1525041.jpg&fm=jpg" alt="Snow" style="width:70%; height: 70%; border-radius: 45px;">
+				<div class="top-left"><a href="/"><button type="button" class="btn-close" aria-label="Close" style="margin: 1%;" ></button></a></div>
+				<div class="centered"><h1>Create Post</h1>
+					<div class="radiogroup" display="block-inline">
+						<form method="post" enctype="multipart/form-data">
+							{% if user.is_authenticated %}
+								{% csrf_token %}
+								{{ form.as_p }}
+								<button type="submit">Опубликовать</button>
+							{% else %}
+								<h1>Вы не можете создать пост, чтобы создать пост вам нужно войти в свой акайнт или же создать его.</h1>
+							{% endif %}
+						</form>
+					</div>
+			  </div>
+		</div> 
+	</div>
+
+
+	
+{% endblock %}
+
+{% block search %}
+  <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+    <input name="q" class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id='input'>
+  </form>
+{% endblock %}
+	
+{% for i in rubric %}
+	<a href="/rubric/{{i.pk}}">{{i.name}}</a>
+{% endfor %}

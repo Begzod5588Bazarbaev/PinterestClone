@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="create-div" style="margin-left: 10%; margin-right: 10%; border-radius: 15px;">
+    <div class="contain">
+        <img class="image-create" src="https://izokurs.ru/assets/images/content/articles/684/y1ixzgdj.jpg" alt="Snow" style="width:50%; height: 50%; border-radius: 30px;">
+        <div class="top-left"><a href="/"><button type="button" class="btn-close" aria-label="Close" style="margin: 1%;" ></button></a></div>
+        <div class="centered"><h1>Create Post</h1>
+            <div class="radiogroup" display="block-inline">
+                <p>You must be logged in to submit or view quotes.</p>
+                            <form method="post" action="{% url 'login' %}">
+                                <table>
+                                    {{ form.as_table }}
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td><input type="submit" value="login"></td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    Not registered yet? 
+                                    <a href="{% url 'register' %}">Register here</a>
+                                </p>
+                                <input type="hidden" name="next" value="{{ next }}">
+                            </form>
+            </div>
+      </div>
+</div> 
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Menu{% endblock %}
+
+{% block search %}
+  <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+    <input name="q" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"  id='input'>
+  </form>
+{% endblock %}
+	
+{% for i in rubric %}
+	<a href="/rubric/{{i.pk}}">{{i.name}}</a>
+{% endfor %}
+
+{% block content %}
+  <div class="pinterest">
+    <h1>Что такое Pinterest?</h1>
+    <div>
+      <h4>Pinterest — социальный интернет-сервис, фотохостинг, позволяющий пользователям добавлять в режиме онлайн изображения, помещать их в тематические коллекции и делиться ими с другими пользователями. Изображения можно «приколоть» к коллекциям, которые называются «досками».</h4>
+    </div>
+  </div>
+{% endblock %}

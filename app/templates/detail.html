@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block search %}
+  <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+    <input name="q" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"  id='input'>
+  </form>
+{% endblock %}
+  
+{% for i in rubric %}
+  <a href="/rubric/{{i.pk}}" style="margin-top: 5%;">{{i.name}}</a>
+{% endfor %}
+
+{% block content %}
+  <div style="background-color:rgba(216, 216, 216, 0.285); margin-left: 10%; margin-right: 10%; border-radius: 30px;">
+    <div>
+      <table>
+        <tr>
+          <td>
+              <img  src="{{ product.image.url }}" style="border-radius: 30px; width: 450px;">
+          </td>
+          <td style="color: black;">
+            <div style="padding-left: 50px; padding-right: 50px;">
+              <h1 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{ product.title }}</h1>
+              <div>
+                <h3 style="padding-top: 50px;">{{ product.detail }}</h3>
+                <h6>Категория: {{ product.category }}</h6>
+                <div><h6>Author: {{product.user}}<button>Подписаться</button></h6></div>
+                <p>{{ product.date }}</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+    </table>
+    </div> 
+  </div>
+</div>
+{% include 'comments.html' %}
+{% endblock %}

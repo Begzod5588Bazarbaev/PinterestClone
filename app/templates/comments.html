@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div style="background-color:rgba(216, 216, 216, 0.285); margin-left: 30%; margin-right: 30%; border-radius: 25px; margin-bottom: 10%;">
+        <div>
+            <div>
+                {% if user.is_authenticated %}
+                    <br>
+                    <form style="text-align: center;" action="" id="add_form" method="post" style="color: black;">
+                        <div>
+                            {% csrf_token %}
+                            {{form.as_p}}
+                        </div>
+                        <button form="add_form" type="submit" class="btn btn-primary">Добавить</button>
+                    </form>
+                {% else %}
+                    <br>
+                    <p class="text-danger fs-3 text-center">Вы не можете добавить коментарии, Войдите или Зарегестрируйтесь чтобы добавить коментарии.</p>
+                {% endif %}
+            </div>
+            <hr style="margin-top: 3%; margin-bottom: 5%;">
+            <div style="margin-left: auto; margin-right: auto;"> 
+                <p class="fs-4" style="margin-bottom: 5%;">Комментарии({{object.priducts_comment.all.count}}):</p>
+                {% for product in product.priducts_comment.all %}
+                    <div class="border border-info p-2 mb-3" style="color: black; background-color: rgba(188, 188, 188, 0.493);">
+                        <h3> Автор:{{product.user}}</h3> 
+                        <h6>{{product.text}}</h6>  
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

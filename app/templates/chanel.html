@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Chanel{% endblock %}
+
+{% block search %}
+  <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+    <input name="q" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"  id='input'>
+  </form>
+{% endblock %}
+
+
+{% block content %}
+  {% for i in posts %}
+    <div class="window">
+      <img class="foto" src="{{ i.image.url }}">
+      <div class="hover-zone">
+        <div class="top-bar">
+          <p></p>
+          <a>Save</a>
+        </div>
+        <div class="bottom-bar">
+          <a>↗ website.com</a>
+          <div class="radius-ico">
+            <img src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png">
+            <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png">
+          </div>
+        </div>
+    </div>
+    </div>
+  {% endfor %}
+{% endblock %}

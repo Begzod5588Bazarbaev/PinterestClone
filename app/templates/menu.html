@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="../static/base.css">
+
+{% block title %}Menu{% endblock %}
+
+
+
+{% block search %}
+  <div>
+    <form role="search" action="{% url 'search' %}" method="get">
+      <input name="q" type="text" placeholder="&#x1F50D; Search" aria-label="Search" id='input'>
+    </form>
+  </div>
+ 
+{% endblock %}
+	
+{% for i in rubric %}
+	<a href="/rubric/{{i.pk}}">{{i.name}}</a>
+{% endfor %}
+
+{% block content %}
+  {% for i in posts %}
+      <div class="window">
+        <a href="/{{i.pk}}" style="text-decoration: none;"><img class="foto" src="{{ i.image.url }}"></a>
+        <div class="hover-zone">
+          <div class="top-bar">
+            <p></p>
+            <a>Save</a>
+          </div>
+          <!-------------------->
+          <div class="bottom-bar">
+            <a href="/{{i.pk}}" style="text-decoration: none;">↗ view</a>
+            <div class="radius-ico">
+              <img src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png">
+              <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png">
+            </div>
+          </div>
+      </div>
+    </div>
+    <!--div class="tile">
+      <a href="/{{i.pk}}"><img src="{{ i.image.url }}" alt="tile picture"></a>
+      <div class="tile-bottom">
+        <p>{{ i.title }}</p>
+        <img src="https://github.com/breaclark/pinterest-clone/blob/master/img/dots.png?raw=true" alt="Extra Tile Menu">
+      </div>
+    </div-->
+  {% endfor %}
+{% endblock %}

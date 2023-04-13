@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block search %}
+  <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+    <input name="q" class="form-control me-2" type="text" placeholder="Search" aria-label="Search"  id='input'>
+  </form>
+{% endblock %}
+	
+{% for i in rubric %}
+	<a href="/rubric/{{i.pk}}">{{i.name}}</a>
+{% endfor %}
+
+{% block content %}
+  <div style="text-align: center;">
+    <h1>
+      Contact:
+    </h1>
+    <div style="text-align: center;">
+        <a href="https://github.com/Begzod5588Bazarbaev" style="margin-left: 0px;"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" alt="" style="width: 20px;"></a>
+        <a href="https://t.me/bd_developer_official_account_tg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" alt="" style="width: 20px;"></a>
+        <a href="https://github.com/Begzod5588Bazarbaev"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="" style="width: 20px;"></a>
+    </div>
+  </div>
+{% endblock %}
